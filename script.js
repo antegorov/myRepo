@@ -35,7 +35,7 @@ function getFullPrice(price, sPrice) {
 }
 
 function getTitle(str) {
-	str = str.trim()
+	str = str.replace(/^ +/, '')
 	return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 }
 
@@ -58,4 +58,4 @@ console.log(servicePercentPrice)
 console.log(
 	'Стоимость верстки экранов ' + screenPrice + ' рублей/ долларов/гривен/юани'
 )
-//console.log(getTitle(' КаЛьКулятор Верстки'))
+console.log(getTitle(' КаЛьКулятор Верстки'))
