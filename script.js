@@ -23,14 +23,13 @@ const asking = function () {
 		screenPrice = prompt('Сколько будет стоить данная работа')
 	} while (!isNumber(screenPrice))
 
-	screenPrice = screenPrice.trim()
 	adaptive = confirm('Нужен ли адаптив на сайте?')
 }
 
 const getRollbackMessage = function (price) {
 	if (price >= 30000) return 'Даем скидку в 10%'
 	else if (price >= 15000 && price < 30000) return 'Даем скидку в 5%'
-	else if (price < 15000 && price > 0) return 'Скидка не предусмотрена'
+	else if (price < 15000 && price >= 0) return 'Скидка не предусмотрена'
 	else return 'Что-то пошло не так'
 }
 
@@ -45,15 +44,15 @@ const getAllServicePrices = function () {
 			service2 = prompt('Какой дополнительный тип услуги нужен?')
 		}
 		while (!isNumber(tmp)) {
-			tmp = +prompt('Сколько это будет стоить?')
+			tmp = prompt('Сколько это будет стоить?')
 		}
-		sum += tmp
+		sum += +tmp
 	}
 	return sum
 }
 
-function getFullPrice(price, allServicePrices) {
-	return price + allServicePrices
+function getFullPrice(screenPrice, allServicePrices) {
+	return +screenPrice + allServicePrices
 }
 
 function getTitle(str) {
@@ -73,7 +72,6 @@ title = getTitle(title)
 
 console.log('allServicePrices: ', allServicePrices)
 
-console.log(screens.toLowerCase().split(', '))
 console.log(getRollbackMessage(fullPrice))
 
 console.log(typeof title)
@@ -81,8 +79,12 @@ console.log(typeof screenPrice)
 console.log(typeof adaptive)
 
 console.log(screens.length)
-console.log(title)
+
 console.log(servicePercentPrice)
 console.log(
-	'Стоимость верстки экранов ' + screenPrice + ' рублей/ долларов/гривен/юани'
+	'Стоимость верстки экранов ' +
+		screenPrice +
+		' рублей/ долларов/гривен/юани и Стоимость разработки сайта ' +
+		fullPrice +
+		' рублей'
 )
