@@ -27,10 +27,6 @@ const asking = function () {
 	adaptive = confirm('Нужен ли адаптив на сайте?')
 }
 
-const showTypeOf = function (variable) {
-	console.log(variable, typeof variable)
-}
-
 const getRollbackMessage = function (price) {
 	if (price >= 30000) return 'Даем скидку в 10%'
 	else if (price >= 15000 && price < 30000) return 'Даем скидку в 5%'
@@ -40,6 +36,7 @@ const getRollbackMessage = function (price) {
 
 const getAllServicePrices = function () {
 	let sum = 0
+
 	for (let i = 0; i < 2; i++) {
 		let tmp
 		if (i === 0) {
@@ -73,10 +70,6 @@ allServicePrices = getAllServicePrices()
 fullPrice = getFullPrice(screenPrice, allServicePrices)
 servicePercentPrice = getServicePercentPrices(fullPrice)
 title = getTitle(title)
-
-showTypeOf(title)
-showTypeOf(screenPrice)
-showTypeOf(adaptive)
 
 console.log('allServicePrices: ', allServicePrices)
 
