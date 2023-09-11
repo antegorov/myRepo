@@ -18,10 +18,16 @@ const showTypeOf = function (variable) {
 }
 
 const getRollbackMessage = function (price) {
-	if (price >= 30000) return 'Даем скидку в 10%'
-	else if (price >= 15000 && price < 30000) return 'Даем скидку в 5%'
-	else if (price < 15000 && price > 0) return 'Скидка не предусмотрена'
-	else return 'Что-то пошло не так'
+	if (price >= 30000) {
+		rollback = 10
+		return 'Даем скидку в 10%'
+	} else if (price >= 15000 && price < 30000) {
+		rollback = 5
+		return 'Даем скидку в 5%'
+	} else if (price < 15000 && price > 0) {
+		rollback = 0
+		return 'Скидка не предусмотрена'
+	} else return 'Что-то пошло не так'
 }
 
 const getAllServicePrices = function (sPrice1, sPrice2) {
@@ -47,6 +53,7 @@ const getServicePercentPrices = function (price) {
 getTitle(' КаЛьКулятор Верстки')
 getAllServicePrices(servicePrice1, servicePrice2)
 getFullPrice(screenPrice, allServicePrices)
+getRollbackMessage(fullPrice)
 getServicePercentPrices(fullPrice)
 
 showTypeOf(title)
