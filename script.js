@@ -74,13 +74,11 @@ const appData = {
 		appData.logger()
 	},
 	logger: function () {
-		console.log(appData.fullPrice)
-		console.log(appData.servicePercentPrice)
-
-		for (const item in appData) {
+		for (let item in appData) {
 			console.log(item)
 		}
 	}
 }
 
 appData.start()
+appData.logger()
